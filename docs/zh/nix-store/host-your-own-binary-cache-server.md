@@ -69,8 +69,8 @@ Nix 将直接与 S3 存储桶交互，因此我们都需要给所有需要访问
 S3 凭据。创建 `~/.aws/credentials`，内容如下（请注意用前面 `pwgen` 命令生成的密码替换
 `<nixbuildersecret>`）。
 
-```toml
-[default]
+```conf
+[nixbuilder]
 aws_access_key_id=nixbuilder
 aws_secret_access_key=<nixbuildersecret>
 ```
@@ -171,7 +171,6 @@ cat ~/.config/nix/public.key
 {
   nix = {
     settings = {
-      # 在获取软件包时，替代器将被附加到默认的替代器。
       extra-substituters = [
         "https://s3.homelab.local/nix-cache/"
       ];
